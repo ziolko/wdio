@@ -8,7 +8,7 @@
 
 # Usage
 ```javascript
-const wdio = require('./wdio');
+const wdio = require('wdio');
 const assert = require('chai').assert;
 
 describe('Google web search engine', function() {

@@ -1,6 +1,6 @@
 {
   "name": "wdio",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Wrapper for webdriver.io allowing to write test in synchronous way",
   "keywords": ["wdio", "webdriver", "selenium", "synchronous", "sync", "binding"],
   "homepage": "https://github.com/ziolko/wdio",
