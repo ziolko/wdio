@@ -60,7 +60,7 @@ wdio.wrap = function(code) { ... }
 ```
 
 # Errors description
-### It seems you\'ve forgotten to wrap a call to webdriver.io method into w wdio.wrap
+### It seems you've forgotten to wrap a call to webdriver.io method into w wdio.wrap
 Each call to webdriver.io API has to be wrapped by _wdio.wrap_. If you use Mocha check
  that _it_, _before_, _after_, _beforeEach_ and _afterEach_ calls are wrapped byt _wdio.wrap_ like
  on the example above.
