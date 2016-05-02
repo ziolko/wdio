@@ -5,8 +5,8 @@ const Fiber = require('fibers');
 function getAsyncCommandWrapper(fn) {
     return function(arg1, arg2, arg3, arg4, arg5) {
         if(!Fiber.current) {
-            throw new Error('It seems you\'ve forgotten to wrap a call to webdriver.io method into w wdio.wrap. For details see ' +
-                            'https://github.com/ziolko/wdio#it-seems-youve-forgotten-to-wrap-a-call-to-webdriverio-method-into-w-wdiowrap');
+            throw new Error('It seems you\'ve forgotten to wrap a call to webdriver.io method into w wdio.wrap. For details see\n' +
+                            'https://github.com/ziolko/wdio#errors-description');
         }
 
         return Future.fromPromise(fn.call(this, arg1, arg2, arg3, arg4, arg5)).wait();
@@ -32,8 +32,8 @@ exports.getBrowser = function getBrowser(options) {
 exports.wrap = function wrap(code) {
     return function(callback) {
         if(!callback) {
-            var message = 'No callback for the wdio.wrap provided. For details see ' +
-                          'https://github.com/ziolko/wdio#no-callback-for-the-wdiowrap-provided';
+            var message = 'No callback for the wdio.wrap provided. For details see\n' +
+                          'https://github.com/ziolko/wdio#errors-description';
             throw new Error(message)
         }
 
