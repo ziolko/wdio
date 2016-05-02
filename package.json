@@ -1,0 +1,14 @@
+{
+  "name": "wdio",
+  "version": "0.1.0",
+  "description": "Wrapper for webdriver.io allowing to write test in synchronous way",
+  "keywords": ["wdio", "webdriver", "selenium", "synchronous", "sync", "binding"],
+  "homepage": "",
+  "main": "wdio.js",
+  "author": "Mateusz Zieliński <mateusz.mzielinski@gmail.com> (https://github.com/ziolko)",
+  "license": "MIT",
+  "dependencies": {
+    "fibers": "^1.0.10",
+    "webdriverio": "latest"
+  }
+}
