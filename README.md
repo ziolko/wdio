@@ -14,15 +14,15 @@ const assert = require('chai').assert;
 describe('Google web search engine', function() {
     this.timeout(60000);
 
-    // Create a webdriver.io browser object. Now you can call on this object every method described on
-    // http://webdriver.io/api.html
+    // Create a webdriver.io 'browser' object. Now you can call on this object every
+    // method described on http://webdriver.io/api.html
     var browser = wdio.getBrowser({
         desiredCapabilities: {
             browserName: 'firefox'
         }
     });
 
-    // Every code using the webdriver.io 'browser' object has to be wrapped by wdio.wrap
+    // Every code using the 'browser' object has to be wrapped by wdio.wrap
     before(wdio.wrap(function() {
         browser.init();
     }));
@@ -34,7 +34,7 @@ describe('Google web search engine', function() {
     // If you use Mocha test framework then wrap every single test by wdio.wrap
     // Important: Using wdio.wrap on 'describe' method is invalid.
     // Use it only for: 'it', 'before', 'after', 'beforeEach' and 'afterEach'
-    it('Should return \'Google\' when asked about page title', wdio.wrap(function () {
+    it('Should return "Google" when asked about page title', wdio.wrap(function () {
         browser.url('http://www.google.com');
         assert.equal('Google', browser.getTitle());
     }));
@@ -51,10 +51,11 @@ describe('Google web search engine', function() {
 wdio.getBrowser = function(options) { ... }
 
 /**
- * Wrapper for synchronous webdriver.io code. It returns another function taking a _callback_ as
- * an argument. The provided callback will be called once test is done. In case of error it will
- * be called with the error as an argument.
- * This API makes _wdio_ compatible with Mocha test framework.
+ * Wrapper for synchronous webdriver.io code. It returns another function
+ * taking a callback as an argument.
+ * The provided callback will be called once a test is done.
+ * In case of error it will be called with the error as an argument.
+ * This API makes wdio compatible with Mocha test framework.
  */
 wdio.wrap = function(code) { ... }
 ```
