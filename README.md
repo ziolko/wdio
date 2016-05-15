@@ -22,6 +22,9 @@ describe('Google web search engine', function() {
         }
     });
 
+    // Initialize selenium standalone server if it is not started yet
+    before(wdio.initSelenium);
+
     // Every code using the 'browser' object has to be wrapped by wdio.wrap
     before(wdio.wrap(function() {
         browser.init();
@@ -43,6 +46,18 @@ describe('Google web search engine', function() {
 
 # API
 ```javascript
+
+/**
+* Run selenium standalone server. If port 4444 is busy it does nothing.
+* Othwerwise it uses npm package `selenium-standalone` to run selenium
+* standalone process. The parameter 'option' is optional. If it exists
+* then options.install is passed to the method selenium.install and
+* options.start is passed to the method selenium.start.
+* Selenium.install and selenium.start are described on:
+* https://www.npmjs.com/package/selenium-standalone
+*/
+wdio.initSelenium = function([options], callback) { ... }
+
 /**
  * Return a webdriver.io browser instance. The options object as described on
  * http://webdriver.io/guide/getstarted/configuration.html

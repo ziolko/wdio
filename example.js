@@ -10,6 +10,8 @@ describe('Web search engines', function() {
         }
     });
 
+    before(wdio.initSelenium);
+    
     before(wdio.wrap(function() {
         browser.init();
     }));
