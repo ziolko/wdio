@@ -13,6 +13,22 @@ function getAsyncCommandWrapper(fn) {
     }
 }
 
+function getWaitUntilCommandWrapper(fn) {
+    return getAsyncCommandWrapper(function(condition, ms, interval) {
+        return fn.call(this, function() {
+            return new Promise(function(resolve, reject) {
+                Fiber(function() {
+                    try {
+                        resolve(condition());
+                    } catch(error) {
+                        reject(error)
+                    }
+                }).run();
+            });
+        }, ms, interval);
+    });
+}
+
 exports.getBrowser = function getBrowser(options) {
     var instance = webdriverio.remote(options);
 
@@ -20,11 +36,15 @@ exports.getBrowser = function getBrowser(options) {
         'addListener', 'on', 'once', 'removeListener', 'removeAllListeners', 'listeners',
         'getMaxListeners', 'listenerCount'];
 
+    const SPECIAL_COMMANDS = ['waitUntil'];
+
     Object.keys(Object.getPrototypeOf(instance)).forEach(function(commandName) {
-        if (SYNC_COMMANDS.indexOf(commandName) === -1) {
+        if (SYNC_COMMANDS.indexOf(commandName) === -1 && SPECIAL_COMMANDS.indexOf(commandName) === -1) {
             instance[commandName] = getAsyncCommandWrapper(instance[commandName]);
         }
     });
+
+    instance.waitUntil = getWaitUntilCommandWrapper(instance.waitUntil);
 
     return instance;
 };

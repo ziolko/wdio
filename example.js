@@ -10,9 +10,9 @@ describe('Web search engines', function() {
         }
     });
 
-    // before(wdio.wrap(function() {
+    before(wdio.wrap(function() {
         browser.init();
-    // }));
+    }));
 
     after(wdio.wrap(function() {
         browser.end();
