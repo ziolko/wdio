@@ -2,7 +2,7 @@ const selenium = require('selenium-standalone');
 const webdriverio = require('webdriverio');
 const Future = require('fibers/future');
 const Fiber = require('fibers');
-const portastic = require('portastic');
+const tcpPortUsed = require('tcp-port-used');
 
 function getAsyncCommandWrapper(fn) {
     return function (arg1, arg2, arg3, arg4, arg5) {
@@ -79,19 +79,26 @@ exports.initSelenium = function (options, done) {
         options = {};
     }
 
-    portastic.test(SELENIUM_PORT)
-        .then(function (isFree) {
-            if (!isFree) return done();
+    // Don't create another selenium instance if one is already running
+    // Developer can run selenium on his own so that tests run slightly faster
+    tcpPortUsed.check(SELENIUM_PORT)
+        .then(function (isPortInUse) {
+            if (isPortInUse) {
+                done();
+            } else {
+                installAndStartSelenium();
+            }
+        });
 
-            selenium.install(options.install || {}, function (err) {
-                if (err) return done(err);
+    function installAndStartSelenium() {
+        selenium.install(options.install || {}, function (err) {
+            if (err) return done(err);
 
-                selenium.start(options.start || {}, function (err, process) {
-                    done(err, process);
-                });
-            })
+            selenium.start(options.start || {}, function (err, process) {
+                done(err, process);
+            });
         })
-        .catch(done);
+    }
 };
 
 exports.endSelenium = function (process) {
