@@ -47,6 +47,9 @@ exports.getBrowser = function getBrowser(options) {
     });
 
     instance.waitUntil = getWaitUntilCommandWrapper(instance.waitUntil);
+    instance.addCommand = function(name, code) {
+        instance[name] = code;
+    };
 
     return instance;
 };
@@ -69,6 +72,16 @@ exports.wrap = function wrap(code) {
             }
         }).run();
     }
+};
+
+exports.run = function(code, callback) {
+    if (!callback) {
+        var message = 'No callback for the wdio.run provided. For details see\n' +
+            'https://github.com/ziolko/wdio#errors-description';
+        throw new Error(message)
+    }
+
+    exports.wrap(code)(callback);
 };
 
 exports.initSelenium = function (options, done) {

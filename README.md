@@ -73,6 +73,11 @@ wdio.getBrowser = function(options) { ... }
  * This API makes wdio compatible with Mocha test framework.
  */
 wdio.wrap = function(code) { ... }
+
+/**
+ * Runs synchronous webdriver.io code and calls a callbkack when finished
+ */
+wdio.run = function(code, callback) { ... }
 ```
 
 # Errors description
@@ -84,6 +89,10 @@ Each call to webdriver.io API has to be wrapped by _wdio.wrap_. If you use Mocha
 ### No callback for the wdio.wrap provided.
 It basically means you used _wdio.wrap_ in a wrong place (like _describe_ if you use Mocha). For Mocha
 ensure that _wdio.wrap_ was used in _it_, _before_, _after_, _beforeEach_ or _afterEach_.
+
+### No callback for the wdio.run provided
+If you use _wdio.run_ you have to pass two parameters - the code to run and a callback to
+call once finished. Double check if you've passed both parameters.
 
 # License
 https://opensource.org/licenses/MIT
