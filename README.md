@@ -6,6 +6,7 @@
 
  With this library you can write tests in a synchronous manner while still using your favourite test runner.
 
+ To preview how this library makes your life easier in IDE like IntelliJ IDEA or Webstorm watch [this video](https://www.youtube.com/watch?v=T3Oq4lpCGTs).
 # Usage
 ```javascript
 const wdio = require('wdio');
