@@ -1,6 +1,6 @@
 {
   "name": "wdio",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "Wrapper for webdriver.io allowing to write test in synchronous way",
   "keywords": [
     "webdriverio",
