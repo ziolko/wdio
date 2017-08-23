@@ -1,6 +1,6 @@
 {
   "name": "wdio",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "description": "Wrapper for webdriver.io allowing to write test in synchronous way",
   "keywords": [
     "webdriverio",
@@ -12,6 +12,9 @@
     "binding"
   ],
   "homepage": "https://github.com/ziolko/wdio",
+  "bugs": {
+    "url": "https://github.com/ziolko/wdio"
+  },
   "main": "wdio.js",
   "author": "Mateusz Zieliński <mateusz.mzielinski@gmail.com> (https://github.com/ziolko)",
   "license": "MIT",
