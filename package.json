@@ -20,7 +20,7 @@
   "license": "MIT",
   "dependencies": {
     "chai": "^3.5.0",
-    "fibers": "^1.0.10",
+    "fibers": "^2.0.0",
     "selenium-standalone": "^5.1.0",
     "tcp-port-used": "^0.1.2",
     "webdriverio": "latest"
