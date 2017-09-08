@@ -68,7 +68,11 @@ exports.wrap = function wrap(code) {
                 code.call(self);
                 callback();
             } catch (error) {
-                callback(error);
+                if (callback.fail) {
+                  callback.fail(error)
+                } else {
+                  callback(error);
+                }
             }
         }).run();
     }
