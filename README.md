@@ -7,9 +7,6 @@
  With this library you can write tests in a synchronous manner while still using your favourite test runner.
 
  To preview how this library makes your life easier in IDE like IntelliJ IDEA or Webstorm watch [this video](https://www.youtube.com/watch?v=T3Oq4lpCGTs).
-
-### Shameless cross-selling
- I've recently created a free npm package improving terminal experience for developers. It's called `howto-cli` and you can check it out [here](https://goo.gl/hktDvC) :wink:
  
 # Usage
 ```javascript
