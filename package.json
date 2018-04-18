@@ -1,6 +1,6 @@
 {
   "name": "wdio",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Wrapper for webdriver.io allowing to write test in synchronous way",
   "keywords": [
     "webdriverio",
@@ -20,7 +20,7 @@
   "license": "MIT",
   "dependencies": {
     "fibers": "^2.0.0",
-    "selenium-standalone": "^6.13.0",
+    "selenium-standalone": "~6.6.0",
     "tcp-port-used": "^0.1.2",
     "webdriverio": "^4.12.0"
   },
