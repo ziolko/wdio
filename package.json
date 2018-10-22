@@ -1,6 +1,13 @@
 {
   "name": "wdio",
-  "version": "2.0.2",
+  "version": "3.0.0",
+  "engines": {
+    "node": ">=8.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ziolko/wdio.git"
+  },
   "description": "Wrapper for webdriver.io allowing to write test in synchronous way",
   "keywords": [
     "webdriverio",
@@ -19,7 +26,7 @@
   "author": "Mateusz Zieliński <mateusz.mzielinski@gmail.com> (https://github.com/ziolko)",
   "license": "MIT",
   "dependencies": {
-    "fibers": "^2.0.0",
+    "fibers": "^3.0.0",
     "selenium-standalone": "~6.6.0",
     "tcp-port-used": "^0.1.2",
     "webdriverio": "^4.12.0"
