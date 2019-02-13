@@ -4,7 +4,7 @@ const Future = require('fibers/future');
 const Fiber = require('fibers');
 const tcpPortUsed = require('tcp-port-used');
 
-function getAsyncCommandWrapper (fn) {
+function getAsyncCommandWrapper(fn) {
   return function (arg1, arg2, arg3, arg4, arg5) {
     if (!Fiber.current) {
       throw new Error('It seems you\'ve forgotten to wrap a call to webdriver.io method into w wdio.wrap. For details see\n' +
@@ -15,7 +15,7 @@ function getAsyncCommandWrapper (fn) {
   }
 }
 
-function getWaitUntilCommandWrapper (fn) {
+function getWaitUntilCommandWrapper(fn) {
   return getAsyncCommandWrapper(function (condition, ms, interval) {
     return fn.call(this, function () {
       return new Promise(function (resolve, reject) {
@@ -31,8 +31,8 @@ function getWaitUntilCommandWrapper (fn) {
   });
 }
 
-exports.getBrowser = function getBrowser (options) {
-  var instance = webdriverio.remote(options);
+exports.getBrowser = function getBrowser(options) {
+  const instance = webdriverio.remote(options);
 
   const SYNC_COMMANDS = ['domain', '_events', '_maxListeners', 'setMaxListeners', 'emit',
     'addListener', 'on', 'once', 'removeListener', 'removeAllListeners', 'listeners',
@@ -54,15 +54,15 @@ exports.getBrowser = function getBrowser (options) {
   return instance;
 };
 
-exports.wrap = function wrap (code) {
+exports.wrap = function wrap(code) {
   return function (callback) {
     if (!callback) {
-      var message = 'No callback for the wdio.wrap provided. For details see\n' +
+      const message = 'No callback for the wdio.wrap provided. For details see\n' +
         'https://github.com/ziolko/wdio#errors-description';
       throw new Error(message)
     }
 
-    var self = this;
+    const self = this;
     Fiber(function () {
       try {
         code.call(self);
@@ -80,7 +80,7 @@ exports.wrap = function wrap (code) {
 
 exports.run = function (code, callback) {
   if (!callback) {
-    var message = 'No callback for the wdio.run provided. For details see\n' +
+    const message = 'No callback for the wdio.run provided. For details see\n' +
       'https://github.com/ziolko/wdio#errors-description';
     throw new Error(message)
   }
@@ -107,11 +107,14 @@ exports.initSelenium = function (options, done) {
       }
     });
 
-  function installAndStartSelenium () {
-    selenium.install(options.install || {}, function (err) {
+  function installAndStartSelenium() {
+    const installOptions = Object.assign({ version: '3.4.0' }, options.install);
+    const startOptions = Object.assign({ version: '3.4.0' }, options.start);
+
+    selenium.install(installOptions, function (err) {
       if (err) return done(err);
 
-      selenium.start(options.start || {}, function (err, process) {
+      selenium.start(startOptions, function (err, process) {
         done(err, process);
       });
     })

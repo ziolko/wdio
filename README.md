@@ -8,6 +8,9 @@
 
  To preview how this library makes your life easier in IDE like IntelliJ IDEA or Webstorm watch [this video](https://www.youtube.com/watch?v=T3Oq4lpCGTs).
  
+ 
+ > __Important:__ This package supports v4 or Webdriver.io. Version 5 is not supported.
+ 
 # Usage
 ```javascript
 const wdio = require('wdio');
@@ -51,7 +54,7 @@ describe('Google web search engine', function() {
 
 /**
 * Run selenium standalone server. If port 4444 is busy it does nothing.
-* Othwerwise it uses npm package `selenium-standalone` to run selenium
+* Otherwise it uses npm package `selenium-standalone` to run selenium
 * standalone process. The parameter 'option' is optional. If it exists
 * then options.install is passed to the method selenium.install and
 * options.start is passed to the method selenium.start.
