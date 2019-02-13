@@ -1,6 +1,6 @@
 {
   "name": "wdio",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "engines": {
     "node": ">=8.0.0"
   },
@@ -27,8 +27,8 @@
   "license": "MIT",
   "dependencies": {
     "fibers": "^3.0.0",
-    "selenium-standalone": "~6.6.0",
-    "tcp-port-used": "^0.1.2",
+    "selenium-standalone": "^6.15.4",
+    "tcp-port-used": "^1.0.1",
     "webdriverio": "^4.12.0"
   },
   "devDependencies": {
