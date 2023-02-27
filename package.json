@@ -29,7 +29,7 @@
     "fibers": "^4.0.2",
     "selenium-standalone": "^6.15.4",
     "tcp-port-used": "^1.0.1",
-    "webdriverio": "^4.12.0"
+    "webdriverio": "^8.3.11"
   },
   "devDependencies": {
     "chai": "^3.5.0"
